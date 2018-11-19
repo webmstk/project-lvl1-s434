@@ -1,1 +1,2 @@
 [![](https://jitpack.io/v/webmstk/project-lvl1-s434.svg)](https://jitpack.io/#webmstk/project-lvl1-s434)
+[![Build Status](https://travis-ci.org/webmstk/project-lvl1-s434.svg?branch=master)](https://travis-ci.org/webmstk/project-lvl1-s434)
