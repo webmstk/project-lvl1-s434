@@ -1,3 +1,5 @@
 /.idea
 /target
 /casino.iml
+/.mvn/wrapper/maven-wrapper.jar
+/pom.xml.versionsBackup
