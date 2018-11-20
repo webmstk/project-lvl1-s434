@@ -3,7 +3,7 @@
 clean:
 	./mvnw clean
 
-build: clean
+build: clean lint
 	./mvnw package
 
 run:
@@ -23,6 +23,9 @@ lint:
 	./mvnw spotbugs:check
 	./mvnw pmd:check
 #	./mvnw verify
+
+checkstyle:
+	./mvnw checkstyle:checkstyle
 
 
 # "чистая" сборка
