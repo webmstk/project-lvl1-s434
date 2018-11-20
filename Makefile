@@ -11,17 +11,11 @@ run:
 
 build-run: clean build run
 
-update: update-properties update-plugins
-
-update-properties:
-	./mvnw versions:update-properties
-
-update-plugins:
-	./mvnw versions:display-plugin-updates
+update:
+	./mvnw versions:update-properties versions:display-plugin-updates
 
 lint:
-	./mvnw spotbugs:check
-	./mvnw pmd:check
+	./mvnw spotbugs:check pmd:check
 #	./mvnw verify
 
 checkstyle:
