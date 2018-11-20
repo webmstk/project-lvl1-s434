@@ -21,6 +21,8 @@ update-plugins:
 
 lint:
 	./mvnw spotbugs:check
+	./mvnw pmd:check
+#	./mvnw verify
 
 
 # "чистая" сборка
