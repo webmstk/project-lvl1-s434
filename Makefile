@@ -19,6 +19,9 @@ update-properties:
 update-plugins:
 	./mvnw versions:display-plugin-updates
 
+lint:
+	./mvnw spotbugs:check
+
 
 # "чистая" сборка
 

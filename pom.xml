@@ -29,6 +29,7 @@
         <maven-surefire-plugin.version>3.0.0-M1</maven-surefire-plugin.version>
         <sonar-maven-plugin.version>3.5.0.1254</sonar-maven-plugin.version>
         <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <spotbugs-maven-plugin.version>3.1.8</spotbugs-maven-plugin.version>
 
     </properties>
 
@@ -166,6 +167,12 @@
                 <configuration>
                     <generateBackupPoms>true</generateBackupPoms>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
             </plugin>
 
         </plugins>
