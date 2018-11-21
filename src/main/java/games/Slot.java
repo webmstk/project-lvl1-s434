@@ -3,7 +3,7 @@ package games;
 public class Slot {
     public static void main(String... __) throws InterruptedException {
         final int bet = 10;
-        final int gain = 1000;
+        final int gain = 1_000;
         final int reelMax = 7;
         int money = 100;
 
