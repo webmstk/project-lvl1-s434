@@ -1,7 +1,7 @@
 package games;
 
 public class Slot {
-    public static void main(String... __) throws InterruptedException {
+    public static void main(String... __) {
         final int bet = 10;
         final int gain = 1_000;
         final int reelMax = 7;
