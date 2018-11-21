@@ -23,14 +23,11 @@ public class Slot {
             } else {
                 money -= bet;
                 System.out.println("Проигрыш " + bet + "$, ваш капитал теперь составляет: " + money + "$");
-
-                if (money < bet) {
-                    System.out.println();
-                    System.out.println("Вы проиграли. Приходите, когда будут деньги.");
-                }
             }
 
             System.out.println();
         }
+
+        System.out.println("Вы проиграли. Приходите, когда будут деньги.");
     }
 }
