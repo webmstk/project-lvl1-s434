@@ -7,7 +7,6 @@ public class Slot {
         final int reelMax = 7;
         int money = 100;
 
-
         while (money >= bet) {
             System.out.println("У вас " + money + "$, ставка - " + bet + "$");
 
