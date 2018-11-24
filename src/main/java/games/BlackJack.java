@@ -3,8 +3,12 @@ package games;
 import java.io.IOException;
 import static games.CardUtils.getShuffledCards;
 import static games.CardUtils.getPar;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BlackJack {
+
+    private static final Logger log = LoggerFactory.getLogger(BlackJack.class);
 
     private static final int MAX_VALUE = 21;
 
@@ -138,46 +142,46 @@ public class BlackJack {
     }
 
     private static void printInitRound() {
-        System.out.println("\nУ вас " + playersMoney[PLAYER] + "$, у компьютера - " + playersMoney[AI] +
+        log.info("\nУ вас " + playersMoney[PLAYER] + "$, у компьютера - " + playersMoney[AI] +
                 "$. Начинаем новый раунд!");
     }
 
     private static void printDeal(int player, int card) {
         if (player == PLAYER) {
-            System.out.println("Вам выпала карта " + CardUtils.toString(card));
+            log.info("Вам выпала карта " + CardUtils.toString(card));
         } else {
-            System.out.println("Компьютеру выпала карта " + CardUtils.toString(card));
+            log.info("Компьютеру выпала карта " + CardUtils.toString(card));
         }
     }
 
     private static void printRoundResult(int playerSum, int aiSum) {
-        System.out.println("Сумма ваших очков - " + playerSum + ", компьютера - " + aiSum);
+        log.info("Сумма ваших очков - " + playerSum + ", компьютера - " + aiSum);
     }
 
     private static void printRoundSummary(int playerSum, int aiSum) {
-        System.out.println();
+        log.info("");
 
         if (playerSum > aiSum) {
-            System.out.println("Вы выиграли раунд! Получаете " + BET + "$");
+            log.info("Вы выиграли раунд! Получаете " + BET + "$");
         } else if (playerSum < aiSum) {
-            System.out.println("Вы проиграли раунд! Теряете " + BET + "$");
+            log.info("Вы проиграли раунд! Теряете " + BET + "$");
         } else {
-            System.out.println("Ничья.");
+            log.info("Ничья.");
         }
     }
 
     private static void printGameResult() {
-        System.out.println();
+        log.info("");
 
         if (playersMoney[PLAYER] > 0) {
-            System.out.println("Вы выиграли! Поздравляем!");
+            log.info("Вы выиграли! Поздравляем!");
         } else {
-            System.out.println("Вы проиграли. Соболезнуем...");
+            log.info("Вы проиграли. Соболезнуем...");
         }
     }
 
     private static boolean confirm(String message) throws IOException {
-        System.out.println(message + " \"Y\" - Да, {любой другой символ} - нет (Чтобы выйти из игры, " +
+        log.info(message + " \"Y\" - Да, {любой другой символ} - нет (Чтобы выйти из игры, " +
                 "нажмите Ctrl + C)");
 
         switch (Choice.getCharacterFromUser()) {

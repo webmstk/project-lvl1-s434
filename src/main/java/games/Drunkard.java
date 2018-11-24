@@ -4,8 +4,12 @@ import java.util.Arrays;
 import static games.CardUtils.CARDS_TOTAL_COUNT;
 import static games.CardUtils.getPar;
 import static games.CardUtils.Par;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Drunkard {
+
+    private static final Logger log = LoggerFactory.getLogger(Drunkard.class);
 
     private static final int PLAYER1 = 0;
 
@@ -142,30 +146,30 @@ public class Drunkard {
     }
 
     private static void printRound(int move, int card1, int card2) {
-        System.out.println("Ход #" + move +  ". Карта игрока №" + printPlayer(PLAYER1) + ": " +
+        log.info("Ход #" + move +  ". Карта игрока №" + printPlayer(PLAYER1) + ": " +
                 CardUtils.toString(card1) + "; карта игрока №" + printPlayer(PLAYER2) + ": " +
                 CardUtils.toString(card2) + ".");
     }
 
     private static void printRoundWinner() {
         if (winner == DRAW) {
-            System.out.println("Ничья.");
+            log.info("Ничья.");
         } else {
-            System.out.println("Раунд выиграл игрок №" + printPlayer(winner) + "!");
+            log.info("Раунд выиграл игрок №" + printPlayer(winner) + "!");
         }
     }
 
     private static void printGameWinner(int winner) {
         if (winner == PLAYER1) {
-            System.out.println("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER2));
+            log.info("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER2));
         } else {
-            System.out.println("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER1));
+            log.info("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER1));
         }
     }
 
     private static void printSummary() {
-        System.out.println("Карт у игрока №" + printPlayer(PLAYER1) + ": " + countPlayerCards(PLAYER1) +
+        log.info("Карт у игрока №" + printPlayer(PLAYER1) + ": " + countPlayerCards(PLAYER1) +
                 ", карт у игрока №" + printPlayer(PLAYER2) + ": " + countPlayerCards(PLAYER2));
-        System.out.println();
+        log.info("");
     }
 }
