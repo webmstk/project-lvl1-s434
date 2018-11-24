@@ -1,14 +1,11 @@
 package games;
 
-import org.apache.commons.math3.util.MathArrays;
-
 import java.util.Arrays;
+import static games.CardUtils.CARDS_TOTAL_COUNT;
+import static games.CardUtils.getPar;
+import static games.CardUtils.Par;
 
 public class Drunkard {
-
-    private static final int PARS_TOTAL_COUNT = Par.values().length;
-
-    private static final int CARDS_TOTAL_COUNT = PARS_TOTAL_COUNT * Suit.values().length;
 
     private static final int PLAYER1 = 0;
 
@@ -25,8 +22,8 @@ public class Drunkard {
     private static int winner;
 
     public static void main(String... __) {
-        int[] deck = createDeck();
-        shuffleDeck(deck);
+        int[] deck = CardUtils.getShuffledCards();
+
         dealCards(deck);
 
         int move = 0;
@@ -58,51 +55,6 @@ public class Drunkard {
         } while (!playerCardsIsEmpty());
 
         printGameWinner(winner);
-    }
-
-    enum Suit {
-        SPADES, // пики
-        HEARTS, // черви
-        CLUBS, // трефы
-        DIAMONDS // бубны
-    }
-
-    enum Par {
-        SIX,
-        SEVEN,
-        EIGHT,
-        NINE,
-        TEN,
-        JACK,
-        QUEEN,
-        KING,
-        ACE
-    }
-
-    private static Suit getSuit(int cardNumber) {
-        return Suit.values()[cardNumber / PARS_TOTAL_COUNT];
-    }
-
-    private static Par getPar(int cardNumber) {
-        return Par.values()[cardNumber % PARS_TOTAL_COUNT];
-    }
-
-    private static String toString(int cardNumber) {
-        return getPar(cardNumber) + " " + getSuit(cardNumber);
-    }
-
-    private static int[] createDeck() {
-        int[] deck = new int[CARDS_TOTAL_COUNT];
-
-        for (int i = 0; i < CARDS_TOTAL_COUNT; i++) {
-            deck[i] = i;
-        }
-
-        return deck;
-    }
-
-    private static void shuffleDeck(int[] deck) {
-        MathArrays.shuffle(deck);
     }
 
     private static void dealCards(int[] deck) {
@@ -190,8 +142,9 @@ public class Drunkard {
     }
 
     private static void printRound(int move, int card1, int card2) {
-        System.out.println("Ход #" + move +  ". Карта игрока №" + printPlayer(PLAYER1) + ": " + toString(card1) +
-                "; карта игрока №" + printPlayer(PLAYER2) + ": " + toString(card2) + ".");
+        System.out.println("Ход #" + move +  ". Карта игрока №" + printPlayer(PLAYER1) + ": " +
+                CardUtils.toString(card1) + "; карта игрока №" + printPlayer(PLAYER2) + ": " +
+                CardUtils.toString(card2) + ".");
     }
 
     private static void printRoundWinner() {
