@@ -13,21 +13,21 @@ public class Slot {
         int money = 100;
 
         while (money >= bet) {
-            log.info("У вас " + money + "$, ставка - " + bet + "$");
+            log.info("У вас {}$, ставка - {}$", money, bet);
 
             int reel1 = ((int) Math.round(Math.random() * 100)) % reelMax + 1;
             int reel2 = ((int) Math.round(Math.random() * 100)) % reelMax + 1;
             int reel3 = ((int) Math.round(Math.random() * 100)) % reelMax + 1;
 
             log.info("Крутим барабаны! Розыгрыш принёс следующие результаты: ");
-            log.info("первый барабан - " + reel1 + ", второй - " + reel2 + ", третий - " + reel3);
+            log.info("первый барабан - {}, второй - {}, третий - {}", reel1, reel2, reel3);
 
             if (reel1 == reel2 && reel1 == reel3) {
                 money += gain;
-                log.info("Выигрыш " + gain + "$, ваш капитал теперь составляет: " + money + "$");
+                log.info("Выигрыш {}$, ваш капитал теперь составляет: {}$", gain, money);
             } else {
                 money -= bet;
-                log.info("Проигрыш " + bet + "$, ваш капитал теперь составляет: " + money + "$");
+                log.info("Проигрыш {}$, ваш капитал теперь составляет: {}$", bet, money);
             }
 
             log.info("");

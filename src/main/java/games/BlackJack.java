@@ -137,29 +137,28 @@ public class BlackJack {
     }
 
     private static void printInitRound() {
-        log.info("\nУ вас " + playersMoney[PLAYER] + "$, у компьютера - " + playersMoney[AI] +
-                "$. Начинаем новый раунд!");
+        log.info("\nУ вас {}$, у компьютера - {}$. Начинаем новый раунд!", playersMoney[PLAYER], playersMoney[AI]);
     }
 
     private static void printDeal(int player, int card) {
         if (player == PLAYER) {
-            log.info("Вам выпала карта " + CardUtils.toString(card));
+            log.info("Вам выпала карта {}", CardUtils.toString(card));
         } else {
-            log.info("Компьютеру выпала карта " + CardUtils.toString(card));
+            log.info("Компьютеру выпала карта {}", CardUtils.toString(card));
         }
     }
 
     private static void printRoundResult(int playerSum, int aiSum) {
-        log.info("Сумма ваших очков - " + playerSum + ", компьютера - " + aiSum);
+        log.info("Сумма ваших очков - {}, компьютера - {}", playerSum, aiSum);
     }
 
     private static void printRoundSummary(int playerSum, int aiSum) {
         log.info("");
 
         if (playerSum > aiSum) {
-            log.info("Вы выиграли раунд! Получаете " + BET + "$");
+            log.info("Вы выиграли раунд! Получаете {}$", BET);
         } else if (playerSum < aiSum) {
-            log.info("Вы проиграли раунд! Теряете " + BET + "$");
+            log.info("Вы проиграли раунд! Теряете {}$", BET);
         } else {
             log.info("Ничья.");
         }

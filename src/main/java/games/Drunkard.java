@@ -146,30 +146,29 @@ public class Drunkard {
     }
 
     private static void printRound(int move, int card1, int card2) {
-        log.info("Ход #" + move +  ". Карта игрока №" + printPlayer(PLAYER1) + ": " +
-                CardUtils.toString(card1) + "; карта игрока №" + printPlayer(PLAYER2) + ": " +
-                CardUtils.toString(card2) + ".");
+        log.info("Ход #{}. Карта игрока №{}: {}; карта игрока №{}: {}.", move, printPlayer(PLAYER1),
+                CardUtils.toString(card1), printPlayer(PLAYER2), CardUtils.toString(card2));
     }
 
     private static void printRoundWinner() {
         if (winner == DRAW) {
             log.info("Ничья.");
         } else {
-            log.info("Раунд выиграл игрок №" + printPlayer(winner) + "!");
+            log.info("Раунд выиграл игрок №{}!", printPlayer(winner));
         }
     }
 
     private static void printGameWinner(int winner) {
         if (winner == PLAYER1) {
-            log.info("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER2));
+            log.info("Выиграл игрок №{}, пьяница - игрок №{}", printPlayer(winner), printPlayer(PLAYER2));
         } else {
-            log.info("Выиграл игрок №" + printPlayer(winner) + ", пьяница - игрок №" + printPlayer(PLAYER1));
+            log.info("Выиграл игрок №{}, пьяница - игрок №{}", printPlayer(winner), printPlayer(PLAYER1));
         }
     }
 
     private static void printSummary() {
-        log.info("Карт у игрока №" + printPlayer(PLAYER1) + ": " + countPlayerCards(PLAYER1) +
-                ", карт у игрока №" + printPlayer(PLAYER2) + ": " + countPlayerCards(PLAYER2));
+        log.info("Карт у игрока №{}: {}, карт у игрока №{}: {}", printPlayer(PLAYER1), countPlayerCards(PLAYER1),
+                printPlayer(PLAYER2), countPlayerCards(PLAYER2));
         log.info("");
     }
 }
