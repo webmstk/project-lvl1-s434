@@ -8,7 +8,7 @@ public class Choice {
 
     private static final Logger log = LoggerFactory.getLogger(Choice.class);
 
-    static final String LINE_SEPARATOR = System.lineSeparator();
+    private static final String LINE_SEPARATOR = System.lineSeparator();
 
     public static void main(String... __) {
         log.info("Выберите игру:\n1 - \"однорукий бандит\", 2 - \"пьяница\", 3 - \"Очко\"");
