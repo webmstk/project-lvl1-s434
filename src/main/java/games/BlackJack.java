@@ -24,6 +24,8 @@ public class BlackJack {
 
     private static final int BET = 10;
 
+    private static final int INITIAL_ROUND_CARDS_COUNT = 2;
+
     private static int[] cards; // Основная колода
 
     private static int cursor = 0; // Счётчик карт основной колоды
@@ -37,32 +39,25 @@ public class BlackJack {
     public static void main(String... __) throws IOException {
         while (playersMoney[PLAYER] >= BET && playersMoney[AI] >= BET) {
             int card;
+            int cardsCount;
 
             initRound();
             printInitRound();
 
             // player
 
-            card = dealCard(PLAYER);
-            printDeal(PLAYER, card);
+            cardsCount = 0;
 
-            card = dealCard(PLAYER);
-            printDeal(PLAYER, card);
-
-            while (confirm("Берём ещё?")) {
+            while (cardsCount++ < INITIAL_ROUND_CARDS_COUNT || confirm("Берём ещё?")) {
                 card = dealCard(PLAYER);
                 printDeal(PLAYER, card);
             }
 
             // ai
 
-            card = dealCard(AI);
-            printDeal(AI, card);
+            cardsCount = 0;
 
-            card = dealCard(AI);
-            printDeal(AI, card);
-
-            while (sum(AI) <= AI_STOP_POINTS) {
+            while (cardsCount++ < INITIAL_ROUND_CARDS_COUNT || sum(AI) <= AI_STOP_POINTS) {
                 card = dealCard(AI);
                 printDeal(AI, card);
             }
