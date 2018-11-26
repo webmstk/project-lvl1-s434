@@ -12,6 +12,8 @@ public class BlackJack {
 
     private static final int MAX_VALUE = 21;
 
+    private static final int MAX_CARD_VALUE = 11;
+
     private static final int MAX_CARDS_COUNT = 8;
 
     private static final int PLAYERS_COUNT = 2;
@@ -23,8 +25,6 @@ public class BlackJack {
     private static final int AI_STOP_POINTS = 16;
 
     private static final int BET = 10;
-
-    private static final int INITIAL_ROUND_CARDS_COUNT = 2;
 
     private static int[] cards; // Основная колода
 
@@ -39,28 +39,23 @@ public class BlackJack {
     public static void main(String... __) throws IOException {
         while (playersMoney[PLAYER] >= BET && playersMoney[AI] >= BET) {
             int card;
-            int cardsCount;
 
             initRound();
             printInitRound();
 
             // player
 
-            cardsCount = 0;
-
-            while (cardsCount++ < INITIAL_ROUND_CARDS_COUNT || confirm("Берём ещё?")) {
+            do {
                 card = dealCard(PLAYER);
                 printDeal(PLAYER, card);
-            }
+            } while (safePoints(PLAYER) || confirm("Берём ещё?"));
 
             // ai
 
-            cardsCount = 0;
-
-            while (cardsCount++ < INITIAL_ROUND_CARDS_COUNT || sum(AI) <= AI_STOP_POINTS) {
+            do {
                 card = dealCard(AI);
                 printDeal(AI, card);
-            }
+            } while (safePoints(AI) || sum(AI) <= AI_STOP_POINTS);
 
             // result
 
@@ -134,6 +129,10 @@ public class BlackJack {
 
     private static int dealCard(int player) {
         return addCard2Player(player);
+    }
+
+    private static boolean safePoints(int player) {
+        return sum(player) <= (MAX_VALUE - MAX_CARD_VALUE);
     }
 
     private static void printInitRound() {
