@@ -174,8 +174,8 @@ public class BlackJack {
     }
 
     private static boolean confirm(String message) throws IOException {
-        log.info(message + " \"Y\" - Да, {любой другой символ} - нет (Чтобы выйти из игры, " +
-                "нажмите Ctrl + C)");
+        log.info("{} \"Y\" - Да, {любой другой символ} - нет (Чтобы выйти из игры, " +
+                "нажмите Ctrl + C)", message);
 
         switch (Choice.getCharacterFromUser()) {
             case 'Y':
